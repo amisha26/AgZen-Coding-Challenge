@@ -1,7 +1,10 @@
+# flask imports
+from flask_cors import CORS  
+from flask import Flask, jsonify, request, send_from_directory
+
+# library imports
 import os
 from pathlib import Path
-from flask_cors import CORS  # Import CORS from Flask-CORS
-from flask import Flask, jsonify, request, send_from_directory
 import csv
 from collections import deque
 
@@ -45,7 +48,7 @@ historyData = [
 historyDeque = deque(historyData[0]["data"], maxlen=5)
 
 @app.route('/history-data', methods=['GET'])
-def hello():
+def displayHistoryData():
     global historyDeque
 
     time = int(request.args.get('time'))
